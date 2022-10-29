@@ -1,6 +1,6 @@
 export const register = async (req, res, next) => {
   try {
-    const newUsers
+    const newUsers = new User();
   } catch (error) {
     next(err);
   }
