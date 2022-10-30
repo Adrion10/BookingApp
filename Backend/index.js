@@ -7,7 +7,6 @@ import hotelsRoute from "./routes/hotelsRoutes.js";
 import roomsRoute from "./routes/roomsRoutes.js";
 
 const app = express();
-
 dotenv.config();
 
 const connect = async () => {
