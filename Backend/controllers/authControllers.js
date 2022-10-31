@@ -1,6 +1,7 @@
 import User from "../models/userModal.js";
 import bcrypt from "bcryptjs";
 import { createError } from "../utils/error.js";
+import jwt from "jsonwebtoken";
 
 export const register = async (req, res, next) => {
   try {
@@ -35,7 +36,10 @@ export const login = async (req, res, next) => {
       process.env.JWT
     );
     const { password, isAdmin, ...otherDetails } = user._doc;
-    res.status(200).json({ otherDetails });
+    res
+      .cookie("access_token", token, { httpOnly: true })
+      .status(200)
+      .json({ otherDetails });
   } catch (err) {
     next(err);
   }
