@@ -6,7 +6,7 @@ import {
   getUser,
   getUsers,
 } from "../controllers/userControllers.js";
-import { verifyToken, verifyUser } from "../utils/verifyToken.js";
+import { verifyToken, verifyUser, verifyAdmin } from "../utils/verifyToken.js";
 // import { createError } from "../utils/error.js";
 
 router.get("/checkauthenticaion", verifyToken, (req, res, next) => {
@@ -14,6 +14,9 @@ router.get("/checkauthenticaion", verifyToken, (req, res, next) => {
 });
 router.put("/checkuser:id", verifyUser, (req, res, next) => {
   res.send("hello user, you are logged in and you can delete your account!");
+});
+router.put("/checkadmin:id", verifyAdmin, (req, res, next) => {
+  res.send("hello Admin, you are logged in and you can delete all account!");
 });
 // Update
 router.put("/:id", updateUser);
