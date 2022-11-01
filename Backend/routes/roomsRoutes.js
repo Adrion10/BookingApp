@@ -10,7 +10,7 @@ import {
 import { verifyAdmin } from "../utils/verifyToken.js";
 
 // Create
-router.post("/", verifyAdmin, createRoom);
+router.post("/:hotelid", verifyAdmin, createRoom);
 
 // Update
 router.put("/:id", verifyAdmin, updateRoom);
