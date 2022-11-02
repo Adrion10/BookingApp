@@ -48,7 +48,26 @@ gap: 10px;
     border-radius: 5px;
     position: absolute;
     bottom: -25px;
+    width: 100%;
+    max-width: 1024px;
 }
 .headerIcon{
     color: rgb(63, 93, 111);
+}
+.headerSearchItem{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.headerSearchInput{
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+.headerSearchText{
+    color: rgb(63, 93, 111);
+}
+.date{
+    position: absolute;
+    top: 50px;
 }
