@@ -23,6 +23,12 @@ const Header = () => {
       key: "selection",
     },
   ]);
+  const [openOptions, setOpenOptions] = useState(false);
+  const [options, setOptions] = useState({
+    adult: 1,
+    children: 0,
+    room: 1,
+  });
   return (
     <div className="header">
       <div className="headerContainer">
@@ -71,7 +77,7 @@ const Header = () => {
             <span
               onClick={() => setOpenDate(!openDate)}
               className="headerSearchText"
-            >{`${format(date[0].startDate, "MM/dd/yyyy")}to ${format(
+            >{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
               date[0].endDate,
               "MM/dd/yyyy"
             )}`}</span>
@@ -87,7 +93,27 @@ const Header = () => {
           </div>
           <div className="headerSearchItem">
             <FontAwesomeIcon icon={faPerson} className="headerIcon" />
-            <span className="headerSearchText">2 Adults 2 children 1 room</span>
+            <span className="headerSearchText">{`${options.adult} adult - ${options.children} children - ${options.room} room `}</span>
+            <div className="options">
+              <div className="optionItem">
+                <span className="optionText">Adult</span>
+                <button className="optionCounterBtn">-</button>
+                <span className="optionCounterNumber">1</span>
+                <button className="optionCounterBtn">+</button>
+              </div>
+              <div className="optionItem">
+                <span className="optionText">Children</span>
+                <button className="optionCounterBtn">-</button>
+                <span className="optionCounterNumber">0</span>
+                <button className="optionCounterBtn">+</button>
+              </div>
+              <div className="optionItem">
+                <span className="optionText">Room</span>
+                <button className="optionCounterBtn">-</button>
+                <span className="optionCounterNumber">1</span>
+                <button className="optionCounterBtn">+</button>
+              </div>
+            </div>
           </div>
           <div className="headerSearchItem">
             <button className="headerBtn">Search</button>
