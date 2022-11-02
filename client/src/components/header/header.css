@@ -3,6 +3,7 @@
     color: #fff;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 .headerContainer {
     width: 100%;
@@ -35,4 +36,19 @@ gap: 10px;
     border: none;
     padding: 10px;
     cursor: pointer;
+}
+.headerSearch{
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid rgb(254, 193, 24);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-radius: 5px;
+    position: absolute;
+    bottom: -25px;
+}
+.headerIcon{
+    color: rgb(63, 93, 111);
 }
