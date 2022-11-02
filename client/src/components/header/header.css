@@ -13,5 +13,26 @@
 .headerList {
     display: flex;
     gap: 40px;
-    justify-content: center;
+ margin-bottom: 50px;
+}
+.headerListItem{
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.headerListItem.active{
+    border: 1px solid white ;
+    padding: 10px;
+    border-radius: 20px;
+}
+.headerDesc {
+    margin: 20px;
+}
+.headerBtn{
+    background-color: rgb(93, 93, 201);
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
 }
