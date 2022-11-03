@@ -97,21 +97,27 @@ const Header = () => {
             <div className="options">
               <div className="optionItem">
                 <span className="optionText">Adult</span>
-                <button className="optionCounterBtn">-</button>
-                <span className="optionCounterNumber">1</span>
-                <button className="optionCounterBtn">+</button>
+                <div className="optionCounter">
+                  <button className="optionCounterBtn">-</button>
+                  <span className="optionCounterNumber">1</span>
+                  <button className="optionCounterBtn">+</button>
+                </div>
               </div>
               <div className="optionItem">
                 <span className="optionText">Children</span>
-                <button className="optionCounterBtn">-</button>
-                <span className="optionCounterNumber">0</span>
-                <button className="optionCounterBtn">+</button>
+                <div className="optionCounter">
+                  <button className="optionCounterBtn">-</button>
+                  <span className="optionCounterNumber">0</span>
+                  <button className="optionCounterBtn">+</button>
+                </div>
               </div>
               <div className="optionItem">
                 <span className="optionText">Room</span>
-                <button className="optionCounterBtn">-</button>
-                <span className="optionCounterNumber">1</span>
-                <button className="optionCounterBtn">+</button>
+                <div className="optionCounter">
+                  <button className="optionCounterBtn">-</button>
+                  <span className="optionCounterNumber">1</span>
+                  <button className="optionCounterBtn">+</button>
+                </div>
               </div>
             </div>
           </div>
