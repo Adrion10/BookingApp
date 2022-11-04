@@ -4,10 +4,25 @@
     display: flex;
     justify-content: space-evenly;
     gap: 20px;
+    z-index: 1;
 
+}
+.featuredItem{
+    position: relative;
+    color: aliceblue;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 300px;
 }
 .featuresImg{
     width: 328px;
     height: 300px;
     object-fit: cover;
+}
+.featuredTitles{
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: aliceblue;
+
 }
