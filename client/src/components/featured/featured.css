@@ -1,0 +1,13 @@
+.featured{
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+
+}
+.featuresImg{
+    width: 328px;
+    height: 300px;
+    object-fit: cover;
+}
