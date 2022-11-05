@@ -13,6 +13,7 @@ const Home = () => {
         <Featured />
         <h1 className="homeTitle">Browse by property type</h1>
         <PropertyListener />
+        <h1 className="homeTitle">Homes guests love</h1>
       </div>
     </div>
   );
