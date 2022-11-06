@@ -11,7 +11,17 @@
 }
 .listSearch {
   flex: 1;
+  background-color: #febb02;
+  padding: 10px;
+  border-radius: 10px;
+  position: static;
+  top: 10px;
 }
-.listResults {
+.listResult {
   flex: 3;
+}
+.lsTitleSearch {
+  font-size: 20px;
+  color: rgb(84, 85, 86);
+  margin-bottom: 10px;
 }
