@@ -7,7 +7,7 @@
 }
 .fdItem {
   flex: 1;
-  gap: 20px;
+  gap: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -28,4 +28,12 @@
 .fpRating > button {
   background-color: rgb(51, 95, 216);
   color: white;
+  border: none;
+  padding: 3px;
+  margin-right: 10px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+.fpRating > span {
+  font-weight: bold;
 }
