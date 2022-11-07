@@ -7,7 +7,7 @@ import "./list.css";
 
 const List = () => {
   const location = useLocation();
-  const [destination, setDestination] = useState(location.state.destination);
+  // const [destination, setDestination] = useState(location.state.destination);
   const [date, setDate] = useState(location.state.date);
   const [options, setOptions] = useState(location.state.options);
   return (
@@ -20,7 +20,7 @@ const List = () => {
             <h1 className="lsTitleSearch">Search</h1>
             <div className="lsItem">
               <label> Destination</label>
-              <input type="text" placeholder={destination} />
+              <input type="text" placeholder="" />
             </div>
             <div className="lsItem">
               <label> Chek-in Date</label>
