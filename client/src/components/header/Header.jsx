@@ -16,7 +16,7 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 
 const Header = ({ type }) => {
-  const [destination, setDestination] = useState();
+  const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
