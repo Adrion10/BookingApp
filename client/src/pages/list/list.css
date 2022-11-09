@@ -13,7 +13,7 @@
 
 .listSearch {
   flex: 1;
-  background-color: #f0b205;
+  background-color: #bbbbc4;
   padding: 10px;
   border-radius: 10px;
   position: sticky;
@@ -70,8 +70,8 @@
 
 .listSearch > button {
   padding: 10px;
-  background-color: #037dd5;
-  color: rgb(245, 239, 239);
+  background-color: #05f150;
+  color: rgb(36, 36, 36);
   border: none;
   width: 100%;
   font-weight: 500;
