@@ -19,6 +19,9 @@
 }
 .pListTitle > h1 {
   font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+  text-transform: capitalize;
 }
 .pListTitle > h2 {
   font-size: 14px;

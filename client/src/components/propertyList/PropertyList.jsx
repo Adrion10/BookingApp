@@ -1,7 +1,8 @@
 import "./propertyList.css";
+import useFetch from "../../hooks/useFetch";
 
 const PropertyList = () => {
-  const { data, loading, error } = useFetch(
+  const { data, loading } = useFetch(
     "/hotels/countByCity?cities=berlin,madrit ,paris"
   );
   const images = [
