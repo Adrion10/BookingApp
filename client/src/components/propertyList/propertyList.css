@@ -17,7 +17,7 @@
   height: 150px;
   object-fit: cover;
 }
-.pListTitle > h1 {
+.pListTitles > h1 {
   font-size: 18px;
   font-weight: 600;
   color: #000000;
