@@ -10,32 +10,34 @@ import {
   faCircleXmark,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import useFetch from "../../hooks/useFetch";
+import { useLocation, useNavigate } from "react-router-dom";
+import { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from "../../context/AuthContext";
+import Reserve from "../../components/reserve/Reserve";
 
 const Hotel = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
-  const photos = [
-    {
-      src: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-    },
-    {
-      src: "https://plus.unsplash.com/premium_photo-1661926818635-3d413932f2a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1552858725-693709cc17c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1630888728969-5e43f55a7a18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    },
-    {
-      src: "https://plus.unsplash.com/premium_photo-1661963692705-befe203ba36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
-    },
-    {
-      src: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707389.jpg?k=52156673f9eb6d5d99d3eed9386491a0465ce6f3b995f005ac71abc192dd5827&o=&hp=1",
-    },
-  ];
+  const { data, loading, error } = useFetch(`/hotels/find/${id}`);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const { dates, options } = useContext(SearchContext);
+
+  const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+  function dayDifference(date1, date2) {
+    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+    return diffDays;
+  }
+
+  const days = dayDifference(dates[0].endDate, dates[0].startDate);
 
   const handleOpen = (i) => {
     setSlideNumber(i);
@@ -54,93 +56,97 @@ const Hotel = () => {
     setSlideNumber(newSlideNumber);
   };
 
+  const handleClick = () => {
+    if (user) {
+      setOpenModal(true);
+    } else {
+      navigate("/login");
+    }
+  };
   return (
     <div>
       <Navbar />
       <Header type="list" />
-      <div className="hotelContainer">
-        {open && (
-          <div className="slider">
-            <FontAwesomeIcon
-              icon={faCircleXmark}
-              className="close"
-              onClick={() => setOpen(false)}
-            />
-            <FontAwesomeIcon
-              icon={faCircleArrowLeft}
-              className="arrow"
-              onClick={() => handleMove("l")}
-            />
-            <div className="sliderWrapper">
-              <img src={photos[slideNumber].src} alt="" className="sliderImg" />
-            </div>
-            <FontAwesomeIcon
-              icon={faCircleArrowRight}
-              className="arrow"
-              onClick={() => handleMove("r")}
-            />
-          </div>
-        )}
-        <div className="hotelWrapper">
-          <button className="bookNow"> Book Now!</button>
-          <h1 className="hotelTitle">Dusseledorf strasse Apartments</h1>
-          <div className="hotelAddress">
-            <FontAwesomeIcon icon={faLocationDot} />
-            <span>Berliner St 30 Dusseldorf</span>
-          </div>
-          <span className="hotelDistance">
-            Excellent location – 500m from center
-          </span>
-          <span className="hotelPriceHighlight">
-            Book a stay over €95 at this property and get a free airport taxi
-          </span>
-          <div className="hotelImages">
-            {photos.map((photo, i) => (
-              <div className="hotelImgWrapper" key={i}>
+      {loading ? (
+        "loading"
+      ) : (
+        <div className="hotelContainer">
+          {open && (
+            <div className="slider">
+              <FontAwesomeIcon
+                icon={faCircleXmark}
+                className="close"
+                onClick={() => setOpen(false)}
+              />
+              <FontAwesomeIcon
+                icon={faCircleArrowLeft}
+                className="arrow"
+                onClick={() => handleMove("l")}
+              />
+              <div className="sliderWrapper">
                 <img
-                  onClick={() => handleOpen(i)}
-                  src={photo.src}
+                  src={data.photos[slideNumber]}
                   alt=""
-                  className="hotelImg"
+                  className="sliderImg"
                 />
               </div>
-            ))}
-          </div>
-          <div className="hotelDetails">
-            <div className="hotelDetailsTexts">
-              <h1 className="hotelTitle">Stay in the heart of City</h1>
-              <p className="hotelDesc">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-                provident saepe vel. Voluptates assumenda, tempore impedit iste
-                maiores obcaecati vel tempora, sunt aliquam, quo quisquam quam.
-                Velit hic distinctio eum beatae labore libero doloribus dolorum
-                praesentium, voluptatum eaque dolorem explicabo natus
-                perferendis doloremque voluptas magni rem fugiat! Dolorem,
-                consequatur, dignissimos, nemo repellendus dolorum esse
-                veritatis molestias accusamus voluptatum rem sed cum
-                praesentium. Dolorem adipisci, impedit rerum hic vitae odio quos
-                ducimus at obcaecati dolor accusamus maxime, illum aliquam
-                libero, debitis fuga architecto incidunt? Officia ducimus magnam
-                similique nobis? Maiores quae voluptas quibusdam possimus magnam
-                laborum repellat ipsa non obcaecati sunt?
-              </p>
+              <FontAwesomeIcon
+                icon={faCircleArrowRight}
+                className="arrow"
+                onClick={() => handleMove("r")}
+              />
             </div>
-            <div className="hotelDetailsPrice">
-              <h1>Perfect for a 9-night stay!</h1>
-              <span>
-                Located in the real heart of Krakow, this property has an
-                excellent location score of 9.8!
-              </span>
-              <h2>
-                <b>$890</b> (9 nights)
-              </h2>
-              <button> Book Now!</button>
+          )}
+          <div className="hotelWrapper">
+            <button className="bookNow"> Book Now!</button>
+            <h1 className="hotelTitle">{data.name}</h1>
+            <div className="hotelAddress">
+              <FontAwesomeIcon icon={faLocationDot} />
+              <span>{data.address}</span>
+            </div>
+            <span className="hotelDistance">
+              Excellent location – {data.distance}m from center
+            </span>
+            <span className="hotelPriceHighlight">
+              Book a stay over ${data.cheapestPrice} at this property and get a
+              free airport taxi
+            </span>
+            <div className="hotelImages">
+              {data.photos?.map((photo, i) => (
+                <div className="hotelImgWrapper" key={i}>
+                  <img
+                    onClick={() => handleOpen(i)}
+                    src={photo}
+                    alt=""
+                    className="hotelImg"
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="hotelDetails">
+              <div className="hotelDetailsTexts">
+                <h1 className="hotelTitle">{data.title}</h1>
+                <p className="hotelDesc">{data.desc}</p>
+              </div>
+              <div className="hotelDetailsPrice">
+                <h1>Perfect for a {days}-night stay!</h1>
+                <span>
+                  Located in the real heart of Krakow, this property has an
+                  excellent location score of 9.8!
+                </span>
+                <h2>
+                  <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}
+                  nights)
+                </h2>
+                <button onClick={handleClick}>Reserve or Book Now!</button>
+              </div>
             </div>
           </div>
+          <MailList />
+          <Footer />
         </div>
-        <MailList />
-        <Footer />
-      </div>
+      )}
+      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
     </div>
   );
 };
