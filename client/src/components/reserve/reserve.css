@@ -30,10 +30,17 @@
 .rInfo {
   display: flex;
   flex-direction: column;
-gap: 5px;
+  gap: 5px;
 }
 .rTitle {
-    font-weight: 500;
-
+  font-weight: 500;
 }
-.r
+.rDesc {
+  font-weight: 300;
+}
+.rMax {
+  font-size: 12px;
+}
+.rPrice {
+  font-weight: 500;
+}
