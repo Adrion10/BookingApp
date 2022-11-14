@@ -1,10 +1,11 @@
-import { createContext, useReducer, useEffect } from "react";
+import { createContext, useEffect, useReducer } from "react";
 
 const INITIAL_STATE = {
   user: JSON.parse(localStorage.getItem("user")) || null,
   loading: false,
   error: null,
 };
+
 export const AuthContext = createContext(INITIAL_STATE);
 
 const AuthReducer = (state, action) => {
@@ -21,7 +22,7 @@ const AuthReducer = (state, action) => {
         loading: false,
         error: null,
       };
-    case "LOGIN_FAILUR":
+    case "LOGIN_FAILURE":
       return {
         user: null,
         loading: false,
@@ -37,6 +38,7 @@ const AuthReducer = (state, action) => {
       return state;
   }
 };
+
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
 
@@ -49,8 +51,8 @@ export const AuthContextProvider = ({ children }) => {
       value={{
         user: state.user,
         loading: state.loading,
-        errror: state.error,
-        dispatch: dispatch,
+        error: state.error,
+        dispatch,
       }}
     >
       {children}
