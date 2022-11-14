@@ -1,6 +1,7 @@
 import "./reserve.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+
 import useFetch from "../../hooks/useFetch";
 import { useContext, useState } from "react";
 import { SearchContext } from "../../context/SearchContext";
@@ -105,4 +106,5 @@ const Reserve = ({ setOpen, hotelId }) => {
     </div>
   );
 };
+
 export default Reserve;
