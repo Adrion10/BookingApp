@@ -10,7 +10,6 @@ import {
   countByType,
   getHotelRooms,
 } from "../controllers/hotelControllers.js";
-// import { createError } from "../utils/error.js";
 import { verifyAdmin } from "../utils/verifyToken.js";
 
 //CREATE
