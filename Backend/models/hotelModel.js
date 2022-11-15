@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const HotelSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -18,7 +17,7 @@ const HotelSchema = new mongoose.Schema({
     required: true,
   },
   distance: {
-    type: Number,
+    type: String,
     required: true,
   },
   photos: {
