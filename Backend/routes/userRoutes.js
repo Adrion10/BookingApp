@@ -6,28 +6,30 @@ import {
   getUser,
   getUsers,
 } from "../controllers/userControllers.js";
-import { verifyToken, verifyUser, verifyAdmin } from "../utils/verifyToken.js";
-// import { createError } from "../utils/error.js";
+import { verifyAdmin, verifyToken, verifyUser } from "../utils/verifyToken.js";
 
-// router.get("/checkauthenticaion", verifyToken, (req, res, next) => {
-//   res.send("hello user, you are logged in!");
-// });
-// router.put("/checkuser:id", verifyUser, (req, res, next) => {
-//   res.send("hello user, you are logged in and you can delete your account!");
-// });
-// router.put("/checkadmin:id", verifyAdmin, (req, res, next) => {
-//   res.send("hello Admin, you are logged in and you can delete all account!");
-// });
-// Update
+// router.get("/checkauthentication", verifyToken, (req,res,next)=>{
+//   res.send("hello user, you are logged in")
+// })
+
+// router.get("/checkuser/:id", verifyUser, (req,res,next)=>{
+//   res.send("hello user, you are logged in and you can delete your account")
+// })
+
+// router.get("/checkadmin/:id", verifyAdmin, (req,res,next)=>{
+//   res.send("hello admin, you are logged in and you can delete all accounts")
+// })
+
+//UPDATE
 router.put("/:id", verifyUser, updateUser);
 
-// Delete
+//DELETE
 router.delete("/:id", verifyUser, deleteUser);
 
-//Get
+//GET
 router.get("/:id", verifyUser, getUser);
 
-//get all
+//GET ALL
 router.get("/", verifyAdmin, getUsers);
 
 export default router;
