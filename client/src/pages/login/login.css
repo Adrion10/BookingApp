@@ -5,18 +5,18 @@
   justify-content: center;
 }
 
-.loContainer {
+.lContainer {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.loInput {
+.lInput {
   height: 30px;
   padding: 10px;
 }
 
-.loButton {
+.lButton {
   border: none;
   padding: 10px 20px;
   background-color: #0071c2;
@@ -26,7 +26,7 @@
   border-radius: 5px;
 }
 
-.loButton:disabled {
+.lButton:disabled {
   background-color: #0071c28c;
   cursor: not-allowed;
 }

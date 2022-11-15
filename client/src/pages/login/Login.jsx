@@ -32,22 +32,22 @@ const Login = () => {
 
   return (
     <div className="login">
-      <div className="loContainer">
+      <div className="lContainer">
         <input
           type="text"
           placeholder="username"
           id="username"
           onChange={handleChange}
-          className="loInput"
+          className="lInput"
         />
         <input
           type="password"
           placeholder="password"
           id="password"
           onChange={handleChange}
-          className="loInput"
+          className="lInput"
         />
-        <button disabled={loading} onClick={handleClick} className="loButton">
+        <button disabled={loading} onClick={handleClick} className="lButton">
           Login
         </button>
         {error && <span>{error.message}</span>}
