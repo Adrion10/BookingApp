@@ -39,7 +39,7 @@
 }
 
 .headerBtn {
-  background-color: #0071c2;
+  background-color: #315771;
   color: white;
   font-weight: 500;
   border: none;
@@ -50,7 +50,7 @@
 
 .headerSearch {
   height: 30px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(216, 252, 252);
   border: 3px solid #eeaf02;
   display: flex;
   align-items: center;
@@ -64,7 +64,7 @@
 }
 
 .headerIcon {
-  color: lightgray;
+  color: rgb(32, 26, 26);
 }
 
 .headerSearchItem {
@@ -79,7 +79,7 @@
 }
 
 .headerSearchText {
-  color: lightgray;
+  color: rgb(70, 67, 67);
   cursor: pointer;
 }
 
@@ -119,7 +119,7 @@
   width: 30px;
   height: 30px;
   border: 1px solid #0071c2;
-  color: #0071c2;
+  color: #9dc6e3;
   cursor: pointer;
   background-color: white;
 }
